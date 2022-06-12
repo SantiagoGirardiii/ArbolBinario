@@ -11,8 +11,9 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         PilaVector pila = new PilaVector();
         do {
-            System.out.println("ingrese 1 para agregar nodos, 2 para eliminar");
+            System.out.println("ingrese 1 para agregar nodos, 2 para eliminar, 3 para recorrer , 0 para salir");
             opcion = sc.nextInt();
+            sc.nextLine();
             switch (opcion) {
                 case 1:
                     do {
@@ -32,10 +33,12 @@ public class Main {
                             // TODO Auto-generated catch block
                             e.printStackTrace();
                         }
+                        if(contador < 2){ 
                         System.out.println("ingese 0 para salir  o 1 para continuar");
                         dato = sc.nextInt();
                         }
-                        while (dato != 0);
+                        }
+                        while (dato != 0 && contador < 2);
                         if ( contador != 1  ){
                             try {
                                 a2 = (Nodo) pila.quitar();
@@ -53,10 +56,32 @@ public class Main {
                             dni = sc.nextInt();
                             a = ArbolBinario.nuevoArbol(a1,dni,a2);
                             arbol = new ArbolBinario(a);
-                         }
+                        }
                      break;
                 case 2:
-                    pila.preorden(a);
+                    try {
+                        pila.quitar();
+                    } catch (Exception e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                    }
+                break;
+                case 3: 
+                    System.out.println("Ingrese 1 para recorrer en preorden, 2 para inorden, 3 para postorden");
+                    
+                    int opcion2 = 0;
+                    opcion2 = sc.nextInt();
+                    switch(opcion2){
+                        case 1:
+                            pila.preorden(a);
+                        break;
+                        case 2:
+                            pila.inorden(a);
+                        break;
+                        case 3:
+                            pila.postorden(a);
+                        break;
+                    }
             }
         } while (opcion != 0);
     }

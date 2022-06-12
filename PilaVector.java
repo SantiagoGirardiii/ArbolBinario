@@ -49,4 +49,20 @@ public class PilaVector {
             preorden(r.subarbolDcho());
         }
     }
+
+    public static void inorden(Nodo r){
+        if (r != null){
+            inorden (r.subarbolIzdo());
+            r.visitar();
+            inorden (r.subarbolDcho());
+	    }
+    }
+    
+    public static void postorden(Nodo r){
+        if (r != null){
+            postorden (r.subarbolIzdo());
+            postorden (r.subarbolDcho());
+            r.visitar();
+	    }
+    }
 }
