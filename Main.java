@@ -56,6 +56,12 @@ public class Main {
                             dni = sc.nextInt();
                             a = ArbolBinario.nuevoArbol(a1,dni,a2);
                             arbol = new ArbolBinario(a);
+                            try {
+                                pila.insertar(a);
+                            } catch (Exception e) {
+                                // TODO Auto-generated catch block
+                                e.printStackTrace();
+                            }
                         }
                      break;
                 case 2:
